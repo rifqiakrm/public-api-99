@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"os"
+	"public-api/config"
 
 	"public-api/client"
 	"public-api/handler"
@@ -12,19 +12,11 @@ import (
 
 func main() {
 	// Load from ENV or use fallback
-	listingURL := os.Getenv("LISTING_SERVICE_URL")
-	if listingURL == "" {
-		listingURL = "http://localhost:6000"
-	}
-
-	userURL := os.Getenv("USER_SERVICE_URL")
-	if userURL == "" {
-		userURL = "http://localhost:6001"
-	}
+	cfg := config.Load()
 
 	// Init clients
-	listingClient := client.NewListingClient(listingURL)
-	userClient := client.NewUserClient(userURL)
+	listingClient := client.NewListingClient(cfg.ListingServiceURL)
+	userClient := client.NewUserClient(cfg.UserServiceURL)
 
 	// Init services
 	listingService := service.NewListingService(listingClient, userClient)
