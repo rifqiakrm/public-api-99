@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "cc02480d-322d-4848-8d74-04a0ef93db05",
+		"name": "99 Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3441134"
+	},
+	"item": [
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Rifqi Akram 2\"\n}"
+						},
+						"url": {
+							"raw": "{{user_service}}/users",
+							"host": [
+								"{{user_service}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user_service}}/users/1",
+							"host": [
+								"{{user_service}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by IDs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_ids\":[\r\n        1,\r\n        8\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_service}}/users/batch",
+							"host": [
+								"{{user_service}}"
+							],
+							"path": [
+								"users",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user_service}}/users",
+							"host": [
+								"{{user_service}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public API",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe 2\"\n}"
+						},
+						"url": {
+							"raw": "{{public_api}}/users",
+							"host": [
+								"{{public_api}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 8,\n  \"listing_type\": \"sale\",\n  \"price\": 10000000\n}"
+						},
+						"url": {
+							"raw": "{{public_api}}/listings",
+							"host": [
+								"{{public_api}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{public_api}}/listings?page_num=1&page_size=100",
+							"host": [
+								"{{public_api}}"
+							],
+							"path": [
+								"listings"
+							],
+							"query": [
+								{
+									"key": "page_num",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listing API",
+			"item": [
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "listing_type",
+									"value": "rent",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1500000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{listing_service}}/listings",
+							"host": [
+								"{{listing_service}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{listing_service}}/listings",
+							"host": [
+								"{{listing_service}}"
+							],
+							"path": [
+								"listings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
